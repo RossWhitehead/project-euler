@@ -1,11 +1,11 @@
-package main
+package problem14
 
 import "fmt"
 
 const visitedLength int = 1000001 // Add one to make poitions easier to work with
 var visited [visitedLength]bool
 
-func main() {
+func ExecuteOptimized() {
 	starter := 2
 	next := starter
 	steps := 0
@@ -13,13 +13,13 @@ func main() {
 	maxSteps := 0
 
 	visited[starter] = true
-	visited[starter - 1] = true
-	
+	visited[starter-1] = true
+
 	for {
 		next = getNext(next)
 		fmt.Println(next)
 		visited[next] = true
-		steps ++
+		steps++
 		if next == 1 {
 			if steps > maxSteps {
 				maxSteps = steps
@@ -35,14 +35,14 @@ func main() {
 		}
 	}
 
-  fmt.Println(leader)
+	fmt.Println(leader)
 }
 
 func getNext(current int) int {
-	if current % 2 == 0 {
+	if current%2 == 0 {
 		return current / 2
 	} else {
-		return 3 * current + 1
+		return 3*current + 1
 	}
 }
 
